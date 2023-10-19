@@ -1,29 +1,71 @@
 ---
-
+import '@fontsource/inter';
 ---
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖥️</text></svg>">
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Davi Oliveira 😊</title>
+		<title>Davi Oliveira</title>
 	</head>
 	<body>
-		<h1>Hello World!</h1>
+		<main>
+			<aside>
+				<div style="display: flex; align-items: center;">
+					<h1>Davi Oliveira</h1>
+					<span class="blinking-cursor">|</span>
+				</div>
+				<p class="secondary">Software Engineer</p>
+			</aside>
+			<section style="display: flex; flex-direction: column; gap: 30px;">
+				<button style="width: 250px;">card 1</button>
+				<button style="width: 250px;">card 2</button>
+				<button style="width: 250px;">card 3</button>
+			</section>
+		</main>
+		
 	</body>
 </html>
 
 <style>
 	:root {
 		--dark-background: #1f1f1f;
+		--label-text: #7F8C8C;
 		--light-background: #f9f9fa;
+
+		.secondary {
+			color: var(--label-text);
+		}
+	}
+
+	@keyframes typing {
+		from {
+			width: 0;
+		}
+		to {
+			width: 100%;
+		}
+	}
+
+	@keyframes blink {
+		0%,
+		50% {
+			opacity: 1;
+		}
+		50.1%,
+		100% {
+			opacity: 0;
+		}
 	}
 
 	body {
 		background-color: var(--light-background);
 		color: var(--dark-background);
+		font-family: 'Inter', sans-serif;
+		height: 100%;
+		overflow: hidden;
 	}
 
 	@media (prefers-color-scheme: dark) {
@@ -32,4 +74,37 @@
 			color: var(--light-background);
 		}
 	}
+
+	main {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		margin: 0 auto;
+		max-width: 1280px;
+		min-height: 100vh;
+		place-items: center;
+
+		@media screen and (max-width: 767px) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	aside .blinking-cursor {
+		animation: blink 1s infinite;
+		margin-left: 5px;
+	}
+
+	aside h1 {
+		animation: typing 0.5s steps(40, end), blink-caret .75s step-end infinite;
+		font-size: 2rem;
+		margin: 0;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	aside p {
+		animation: typing 1.5s steps(40, end), blink-caret .75s step-end infinite;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+}
 </style>
