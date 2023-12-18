@@ -19,10 +19,10 @@ import '@fontsource/inter';
 				</div>
 				<p class="secondary">Software Engineer</p>
 			</aside>
-			<section style="display: flex; flex-direction: column; gap: 30px;">
-				<button style="width: 250px;">card 1</button>
-				<button style="width: 250px;">card 2</button>
-				<button style="width: 250px;">card 3</button>
+			<section class="animated animated-fade-in-up fade-in-up">
+				<button>Site 1</button>
+				<button>Site 2</button>
+				<button>Site 3</button>
 			</section>
 		</main>
 		
@@ -58,6 +58,17 @@ import '@fontsource/inter';
 		100% {
 			opacity: 0;
 		}
+	}
+
+	@keyframes fade-in-up {
+    from {
+      transform: translate3d(0,40px,0)
+    }
+
+    to {
+			transform: translate3d(0,0,0);
+			opacity: 1
+    }
 	}
 
 	body {
@@ -105,6 +116,43 @@ import '@fontsource/inter';
 		animation: typing 1.5s steps(40, end), blink-caret .75s step-end infinite;
 		overflow: hidden;
 		white-space: nowrap;
+	}
+
+	.animated {
+		animation-delay: 1s;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+	}
+
+	.animated-fade-in-up {
+		opacity: 0
+	}
+
+	.fade-in-up {
+		opacity: 0;
+		animation-name: fade-in-up;
+		-webkit-animation-name: fade-in-up;
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	section button {
+		background-color: var(--dark-background);
+		color: var(--light-background);
+    padding: 18px;
+		min-width: 280px;
+    border-radius: 8px;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		section button {
+			background-color: var(--light-background);
+			color: var(--dark-background);
+		}
 	}
 }
 </style>
